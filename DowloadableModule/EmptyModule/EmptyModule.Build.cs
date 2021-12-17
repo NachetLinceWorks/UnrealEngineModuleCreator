@@ -9,7 +9,7 @@ public class EmptyModule : ModuleRules
 		PrivateDependencyModuleNames.AddRange(new string[]
 		{
 			// All the modules we want as string
-			"Core"
+			"Core", "CoreUObject", "Engine", "InputCore", "HeadMountedDisplay"
 		});
 	}
 }
