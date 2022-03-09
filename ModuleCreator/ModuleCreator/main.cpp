@@ -1,6 +1,7 @@
 #include <iostream>
 #include <filesystem>
 #include <fstream>
+#include <string>
 
 std::string CreatePath(std::string, std::string);
 bool RenameModule(const std::string&, const std::string&, const std::string&);
@@ -64,10 +65,10 @@ bool RenameModule(const std::string& emptyModulePath, const std::string& desired
 	// Replace all "EmptyModule" inside [ModuleName].Build.cs for [moduleName]
 	ReplaceFromFile(newBuildCsPath, moduleName);
 
-	// Chenge the /Private/EmptyModuleModule.h to /Private/[ModuleName]Module.h
-	std::string moduleH = CreatePath(desiredModuleFolderPath, "/Private/" + initialModuleName + "Module.h");
+	// Chenge the /Public/EmptyModuleModule.h to /Public/[ModuleName]Module.h
+	std::string moduleH = CreatePath(desiredModuleFolderPath, "/Public/" + initialModuleName + "Module.h");
 	if (!CheckIfFileExists(moduleH)) return false;
-	const std::string newModuleHPath = CreateFilePath(desiredModuleFolderPath, "Private/" + moduleName + "Module.h");
+	const std::string newModuleHPath = CreateFilePath(desiredModuleFolderPath, "Public/" + moduleName + "Module.h");
 	std::filesystem::rename(moduleH, newModuleHPath);
 	// Replace all "EmptyModule inside [ModuleName]Module.h for [moduleName]
 	ReplaceFromFile(newModuleHPath, moduleName);
