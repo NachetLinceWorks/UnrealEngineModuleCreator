@@ -1,4 +1,4 @@
-﻿#include "EmptyModule/Public/EmptyModuleModule.h"
+﻿#include "EmptyModuleModule.h"
 
 #include "Modules/ModuleManager.h"
 
